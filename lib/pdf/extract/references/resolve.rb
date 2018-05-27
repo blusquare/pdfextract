@@ -10,7 +10,7 @@ module PdfExtract::Resolve
 
     def self.find ref
       resolved = {:doi => nil, :score => nil}
-      url = "http://search.crossref.org/dois?q=#{CGI.escape(ref)}&rows=1"
+      url = "https://search.crossref.org/dois?q=#{CGI.escape(ref)}&rows=1"
       query = JSON.parse(open(url).read())
       unless query.nil? or query[0].nil?
         resolved[:doi] = query[0]["doi"].sub "http://dx.doi.org/",""
@@ -75,7 +75,7 @@ module PdfExtract::Resolve
 
       post = Net::HTTP::Post.new "/SimpleTextQuery"
       post.add_field "Cookie", @@cookie
-      post.add_field "Referer", "http://www.crossref.org/SimpleTextQuery"
+      post.add_field "Referer", "https://www.crossref.org/SimpleTextQuery"
       post.set_form_data({
         "command" => "Submit",
         "freetext" => ref,

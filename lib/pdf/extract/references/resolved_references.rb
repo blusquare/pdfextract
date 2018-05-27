@@ -21,13 +21,13 @@ module PdfExtract
 
     def self.reverse_resolve ref
       
-      url = "http://api.labs.crossref.org/search?q=#{CGI.escape(ref)}"
+      url = "https://api.labs.crossref.org/search?q=#{CGI.escape(ref)}"
       doc = Nokogiri::HTML(open url)
 
       result = doc.at_css "div.result"
       score = result.at_css("span.cr_score").content.to_s
       if score.to_i >= 90
-        result.at_css("span.doi").content.sub("http://dx.doi.org/", "")
+        result.at_css("span.doi").content.sub("https://dx.doi.org/", "")
       else
         ""
       end

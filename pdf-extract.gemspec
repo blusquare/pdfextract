@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sqlite3', '~> 1.3'
   s.add_dependency 'commander', '~> 4.0'
   s.add_dependency 'json', '~> 1.5'
-  s.add_dependency 'rb-libsvm', '~> 1.4'
+  s.add_dependency 'rb-libsvm', '~> 1.1'
 
   s.add_development_dependency 'mongo', '~> 1.9'
   s.add_development_dependency 'bson_ext', '~> 1.9'
